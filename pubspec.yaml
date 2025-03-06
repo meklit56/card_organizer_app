@@ -1,0 +1,23 @@
+name: card_organizer_app
+description: A Flutter app to organize playing cards into folders based on suits.
+publish_to: 'none' # Prevents accidental publishing to pub.dev
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.0.2  # SQLite database support
+  path_provider: ^2.1.2  # Helps find the database path
+  provider: ^6.1.2  # Downgraded to the latest stable version
+  fluttertoast: ^8.2.4  # To show messages when adding/removing cards
+  path: ^1.8.2  # Add the path package here
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
