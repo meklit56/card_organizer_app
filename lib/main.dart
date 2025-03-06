@@ -7,6 +7,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext appcontext) {
     return MaterialApp(
@@ -16,6 +18,8 @@ class MyApp extends StatelessWidget {
 }
 
 class CardOrganizerApp extends StatefulWidget {
+  const CardOrganizerApp({super.key});
+
   @override
   _CardOrganizerAppState createState() => _CardOrganizerAppState();
 }
@@ -49,7 +53,7 @@ class _CardOrganizerAppState extends State<CardOrganizerApp> {
 
   void showSnackBar(BuildContext context, String message, {Color color = Colors.red}) {
   ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text(message), backgroundColor: color, duration: Duration(seconds: 2)),
+    SnackBar(content: Text(message), backgroundColor: color, duration: const Duration(seconds: 2)),
   );
 }
 
@@ -80,12 +84,12 @@ class _CardOrganizerAppState extends State<CardOrganizerApp> {
       context: context as BuildContext,  
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          title: Text("Delete Folder?"),
-          content: Text("Are you sure you want to delete this folder? This action cannot be undone."),
+          title: const Text("Delete Folder?"),
+          content: const Text("Are you sure you want to delete this folder? This action cannot be undone."),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(dialogContext).pop(),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             TextButton(
               onPressed: () async {
@@ -94,7 +98,7 @@ class _CardOrganizerAppState extends State<CardOrganizerApp> {
                 showSnackBar(context as BuildContext,"Folder deleted successfully! ✅", color: Colors.green);
                 setState(() {});
               },
-              child: Text("Delete", style: TextStyle(color: Colors.red)),
+              child: const Text("Delete", style: TextStyle(color: Colors.red)),
             ),
           ],
         );
@@ -105,23 +109,23 @@ class _CardOrganizerAppState extends State<CardOrganizerApp> {
   @override
   Widget build(BuildContext appContext) {
     if (!isDbInitialized) {
-      return Scaffold(body: Center(child: CircularProgressIndicator()));
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text("Card Organizer")),
+      appBar: AppBar(title: const Text("Card Organizer")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () => addCard("Ace of Spades", 1),
-              child: Text("Add Card"),
+              child: const Text("Add Card"),
             ),
             ElevatedButton(
               onPressed: () => confirmDeleteFolder(1),
-              child: Text("Delete Folder"),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: Text("Delete Folder"),
             ),
           ],
         ),
